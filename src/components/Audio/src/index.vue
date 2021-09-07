@@ -114,7 +114,7 @@ export default {
     musics: {
       handler(newV, oldV) {
         console.log("监听到的新值的变化", newV);
-        this.refresh(audioUrl);
+        this.refresh(newV.url);
       },
       deep: true,
     },
