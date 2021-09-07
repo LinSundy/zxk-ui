@@ -1,6 +1,6 @@
 {
   "name": "zxk-ui",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "1. 配置webpack的入口",
   "main": "./lib/index.js",
   "directories": {
