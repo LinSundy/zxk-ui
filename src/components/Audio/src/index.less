@@ -1,0 +1,195 @@
+// 图标
+@font-face {
+  font-family: "iconfont"; /* Project id  */
+  src: url('../iconfont.ttf?t=1621233841296') format('truetype');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-pause:before {
+  content: "\e638";
+}
+
+.icon-voice:before {
+  content: "\e753";
+}
+
+.icon-play:before {
+  content: "\e65c";
+}
+
+.icon-previous:before {
+  content: "\e99b";
+}
+
+// 自定义主题颜色
+
+@green: #1FDD9E;
+@font-color: #ADADAF;
+
+
+
+// 各种宽度自适应定义
+@progress-left: 10px;
+@time-right: 10px;
+@volume-left: 60px;
+
+.audio {
+  background-color: rgba(31, 221, 157, 0.05);
+  text-align: left;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  .view_container {
+    position: relative;
+    height: 30px;
+    // 进度条样式
+    .progress {
+      height: 4px;
+      position: absolute;
+      margin-left: @progress-left;
+      top: 50%;
+      border-radius: 3px;
+      transform: translateY(-50%);
+      background-color: lighten(@green, 40%);
+      width: calc(100% - @progress-left - 115px - @time-right);
+      cursor: pointer;
+
+      // 进度条已播样式
+      .on {
+        border-radius: 3px;
+        background-color: @green;
+        position: absolute;
+        height: inherit;
+      }
+
+      // 进度条上拖拽的按钮样式
+      .drag-btn {
+        cursor: pointer;
+        position: absolute;
+        background-color: #fff;
+        width: 8px;
+        height: 8px;
+        border: @green 1px solid;
+        border-radius: 50%;
+        right: 0;
+        top: 50%;
+        transform: translate(50%, -50%);
+      }
+    }
+
+    // 时间样式
+    .time {
+      position: absolute;
+      right: @time-right;
+      top: 50%;
+      transform: translateY(-50%);
+      color: @font-color;
+      font-weight: Bold;
+    }
+  }
+
+  // 操作区
+  .operation_container {
+    margin-left: @progress-left;
+    color: @green;
+
+    // 上一曲
+    .prev {
+      margin-right: 10px;
+      display: inline-block;
+      // 使用的图标不规整所以放大 使其看起来与播放按钮是差不多大小的
+      transform: scale(1.2);
+      cursor: pointer;
+    }
+
+    // 下一曲
+    .next {
+      cursor: pointer;
+      display: inline-block;
+      margin-left: 7px;
+      transform: rotate(180deg) scale(1.2);
+    }
+
+    // 播放按钮
+    .play-btn {
+      //position: absolute;
+      text-align: center;
+      line-height: 16px;
+      height: 16px;
+      width: 16px;
+      left: 5px;
+      top: 50%;
+      cursor: pointer;
+      //transform: translateY(-50%);
+      border-radius: 50%;
+      display: inline-block;
+      .iconfont();
+
+      //&.icon-play, &.icon-pause {
+      //  color: @green;
+      //}
+
+      // 暂停按钮稍微小一些，是因为图标的问题,可以自定义icon
+      &.icon-pause {
+        font-size: 14px;
+      }
+    }
+
+    // 音量调节容器
+    .volume-container {
+      position: relative;
+      display: inline-block;
+
+      .volume {
+        cursor: pointer;
+        margin-left: @volume-left;
+
+        &.single {
+          margin-left: @volume-left / 3;
+        }
+      }
+
+      .volume-progress {
+        position: absolute;
+        top: 50%;
+        transform: translate(7px, -50%);
+        margin-top: -1px;
+        display: inline-block;
+        width: 100px;
+        height: 4px;
+        border-radius: 10px;
+        background-color: lighten(@green, 40%);
+
+        .on {
+          position: absolute;
+          border-radius: 10px;
+          height: 4px;
+          background-color: @green;
+        }
+
+        .volume-drag {
+          cursor: pointer;
+          position: absolute;
+          display: inline-block;
+          right: 0;
+          width: 8px;
+          height: 8px;
+          border-radius: 50%;
+          background-color: @green;
+          top: 50%;
+          transform: translate(50%, -50%);
+        }
+      }
+    }
+  }
+}
+
