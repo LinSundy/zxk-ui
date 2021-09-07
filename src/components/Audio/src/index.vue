@@ -124,8 +124,19 @@ export default {
     refresh(audioUrl) {
       if (this.isMultiple) return;
       this.ap.src = audioUrl;
-      this.destroyAudio();
-      this.registryAudio();
+
+      // 先判断allAudioNodes中是否有this，如果没有再添加
+      if (!this.allAudioNodes.includes(this)) {
+        // 将所有的audio都收集起来
+        this.allAudioNodes.push(this);
+        // audio添加音频事件
+        this.registryAudio();
+      }
+
+      // 初始化progress的宽度
+      this.progressNodeWidth = this.$refs.progress.offsetWidth;
+      // 初始化volumeProgress的宽度
+      this.volumeProgressNodeWidth = this.$refs.volumeProgress.offsetWidth;
     },
 
     // 上一首
