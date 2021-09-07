@@ -14,3 +14,12 @@
 
 6. 尝试引用一下新的ui组件,涉及到样式的时候该如何处理
 
+
+### Props
+
+
+### Functions
+
+- `refresh`
+  - this.$refs.audio.refesh() 新增一个方法，refresh方法，用于musics传入为对象的时候，那么新的url地址被重新载入，更新于2021-9-7号
+

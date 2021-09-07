@@ -75,9 +75,23 @@ export default {
       } else {
         this.ap.src = this.musics[n].url;
       }
+    },
+    musics: {
+      handler(newV, oldV) {
+        console.log('监听到的新值的变化', newV)
+        if(newV instanceof Array) return
+        this.ap.src = newV.url;
+      },
+      deep: true
     }
   },
   methods: {
+    // 当musics为对象时，只修改内部的url，也需要将音频重新初始化。此方法只针对单个音频有效。多个音频的待补充/
+    refresh() {
+      if(this.isMultiple) return
+
+    },
+
     // 上一首
     prev() {
       if(this.currentAudioIndex === 0) {
