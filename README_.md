@@ -19,3 +19,13 @@
 3. `less-loader`
     - https://webpack.docschina.org/loaders/less-loader/
 
+
+> 在多个项目联调的过程中，使用npm link去操作, 注意mac下需要用到`sudo`命令
+
+1. cd到模块目录，npm link，进行全局link
+2. cd到项目目录，npm link 模块名(package.json中的name)
+
+- 可以单独将项目的link解除，保留模块的全局link
+
+3. 解除项目和模块link，项目目录下，npm unlink 模块名
+4. 解除模块全局link，模块目录下，npm unlink 模块名

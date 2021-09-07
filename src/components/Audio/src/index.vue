@@ -124,19 +124,16 @@ export default {
     refresh(audioUrl) {
       if (this.isMultiple) return;
       this.ap.src = audioUrl;
-
-      // 先判断allAudioNodes中是否有this，如果没有再添加
-      if (!this.allAudioNodes.includes(this)) {
-        // 将所有的audio都收集起来
-        this.allAudioNodes.push(this);
-        // audio添加音频事件
-        this.registryAudio();
+      if(!this.allAudioNodes.includes(this)) {
+        this.allAudioNodes.push(this)
+        
+         // 初始化progress的宽度
+        this.progressNodeWidth = this.$refs.progress.offsetWidth;
+        // 初始化volumeProgress的宽度
+        this.volumeProgressNodeWidth = this.$refs.volumeProgress.offsetWidth;
       }
-
-      // 初始化progress的宽度
-      this.progressNodeWidth = this.$refs.progress.offsetWidth;
-      // 初始化volumeProgress的宽度
-      this.volumeProgressNodeWidth = this.$refs.volumeProgress.offsetWidth;
+      this.registryAudio()
+      console.log(this.allAudioNodes, 'Nodes')
     },
 
     // 上一首
@@ -277,17 +274,19 @@ export default {
         }
         this.ap.src = this.musics.url;
       }
+      if (!this.allAudioNodes.includes(this)) {
+        console.log('新加的节点')
+        // 将所有的audio都收集起来
+        this.allAudioNodes.push(this);
 
-      // 将所有的audio都收集起来
-      this.allAudioNodes.push(this);
+        // audio添加音频事件
+        this.registryAudio();
 
-      // audio添加音频事件
-      this.registryAudio();
-
-      // 初始化progress的宽度
-      this.progressNodeWidth = this.$refs.progress.offsetWidth;
-      // 初始化volumeProgress的宽度
-      this.volumeProgressNodeWidth = this.$refs.volumeProgress.offsetWidth;
+        // 初始化progress的宽度
+        this.progressNodeWidth = this.$refs.progress.offsetWidth;
+        // 初始化volumeProgress的宽度
+        this.volumeProgressNodeWidth = this.$refs.volumeProgress.offsetWidth;
+      }
     },
 
     /*
